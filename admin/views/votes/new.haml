@@ -1,0 +1,15 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first=link_to pat(:list), url(:votes, :index)
+      - if current_account.is_admin?
+        %li.active=link_to pat(:new), url(:votes, :new)
+  .content
+    %h2.title
+      =pat(:new)
+      =mt(:vote)
+    .inner
+      -form_for :vote, url(:votes, :create), :class => :form do |f|
+        =partial "votes/form", :locals => { :f => f }
+
+-content_for :sidebar, partial("base/sidebar")

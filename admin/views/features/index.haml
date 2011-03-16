@@ -1,0 +1,49 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:features, :index)
+      - if current_account.is_admin?
+        %li=link_to pat(:new), url(:features, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:features)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:feature, :id)
+          %th=mat(:feature, :name)
+          %th=mat(:feature, :description)
+          %th=mat(:feature, :created)
+          %th=mat(:feature, :category)
+          %th=mat(:feature, :cost)
+          %th=mat(:feature, :status)
+          %th=mat(:feature, :votes)
+          - if current_account.is_admin?
+            %th=mat(:feature, :account_id)
+            %th.last="&nbsp;"
+          - else
+            %th.last=mat(:feature, :account_id)
+        -@features.each do |feature|
+          - next if feature.status == "draft" && !current_account.is_admin?
+          %tr
+            %td.first=feature.id
+            %td=feature.name
+            %td=feature.description
+            %td=feature.created
+            %td=feature.category
+            %td=feature.cost
+            %td=feature.status
+            %td=feature.votes.count
+            - if current_account.is_admin?
+              %td=feature.account_id
+              %td.last
+                =button_to pat(:edit), url(:features, :edit, :id => feature.id), :method => :get, :class => :button_to
+                ="|"
+                =button_to pat(:delete), url(:features, :destroy, :id => feature.id), :method => :delete, :class => :button_to
+            - else
+              %td.last=feature.account_id
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")

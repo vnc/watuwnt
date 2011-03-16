@@ -1,0 +1,15 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first=link_to pat(:list), url(:features, :index)
+      - if current_account.is_admin?
+        %li.active=link_to pat(:new), url(:features, :new)
+  .content
+    %h2.title
+      =pat(:new)
+      =mt(:feature)
+    .inner
+      -form_for :feature, url(:features, :create), :class => :form do |f|
+        =partial "features/form", :locals => { :f => f }
+
+-content_for :sidebar, partial("base/sidebar")
