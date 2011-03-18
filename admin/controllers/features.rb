@@ -63,4 +63,19 @@ Admin.controllers :features do
     end
     redirect url(:features, :index)
   end
+  
+  helpers do
+    def tr_voted(votes)
+      votes.sort_by! { |vote| vote.date }
+      votes.reverse_each do |vote|
+        if (vote.account_id == current_account.id)
+          if (vote.credits > 0)
+            return 'background-color:rgb(144, 238, 144)'
+          end
+          return
+        end
+      end
+      nil
+    end
+  end
 end

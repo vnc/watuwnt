@@ -22,6 +22,7 @@ class Admin < Padrino::Application
   access_control.roles_for :any do |role|
     role.protect "/"
     role.allow "/sessions"
+    role.allow "/votes/create"
   end
 
   access_control.roles_for :admin do |role|

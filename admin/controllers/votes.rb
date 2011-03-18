@@ -1,5 +1,15 @@
 Admin.controllers :votes do
 
+  helpers do
+    def json_status(code, reason)
+      status code
+      {
+        :status => code,
+        :reason => reason
+      }.to_json
+    end
+  end
+
   get :index do
     @votes = Vote.all
     render 'votes/index'
@@ -10,13 +20,21 @@ Admin.controllers :votes do
     render 'votes/new'
   end
 
-  post :create do
-    @vote = Vote.new(params[:vote])
+  post :create, :provides => :json do
+    content_type :json
+    
+    @vote = Vote.new()
+    @vote.credits = params[:credits]
+    @vote.feature_id = params[:feature_id]
+    @vote.date = Time.new
+    @vote.account_id = current_account.id
     if @vote.save
-      flash[:notice] = 'Vote was successfully created.'
-      redirect url(:votes, :edit, :id => @vote.id)
+      #flash[:notice] = 'Vote was successfully created.'
+      #redirect url(:votes, :edit, :id => @vote.id)
+      status 201 # created
+      @vote.to_json
     else
-      render 'votes/new'
+      json_status 400, @vote.errors.to_hash
     end
   end
 
