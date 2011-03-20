@@ -30,9 +30,13 @@ Admin.controllers :votes do
     @vote.account_id = current_account.id
     if @vote.save
       #flash[:notice] = 'Vote was successfully created.'
-      #redirect url(:votes, :edit, :id => @vote.id)
       status 201 # created
-      @vote.to_json
+      {
+        :status => 201,
+        :new_vote_count => Feature.get(@vote.feature_id).vote_count,
+        :user_balance => 0,
+        :vote => @vote
+      }.to_json
     else
       json_status 400, @vote.errors.to_hash
     end

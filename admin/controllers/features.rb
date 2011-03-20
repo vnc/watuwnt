@@ -67,15 +67,19 @@ Admin.controllers :features do
   helpers do
     def tr_voted(votes)
       votes.sort_by! { |vote| vote.date }
-      votes.reverse_each do |vote|
-        if (vote.account_id == current_account.id)
-          if (vote.credits > 0)
-            return 'background-color:rgb(144, 238, 144)'
+      votes.reverse_each do |vote| #order votes by newest to oldest
+        if (vote.account_id == current_account.id) # if we find a vote for the current user
+          if (vote.credits > 0) # and that vote is for a positive number
+            return 'background-color:rgb(144, 238, 144)' # return the new color for the row
           end
           return
         end
       end
       nil
+    end
+    
+    def tr_vote_count(votes)
+      
     end
   end
 end

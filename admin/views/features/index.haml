@@ -36,14 +36,14 @@
             %td.cost=feature.cost
             %td.status=feature.status
             - if current_account.is_admin?
-              %td.votes=feature.votes.count
+              %td.votes=feature.vote_count
               %td.account_id=feature.account_id
               %td.last
                 =button_to pat(:edit), url(:features, :edit, :id => feature.id), :method => :get, :class => :button_to
                 ="|"
                 =button_to pat(:delete), url(:features, :destroy, :id => feature.id), :method => :delete, :class => :button_to
             - else
-              %td.last.votes=feature.votes.count
+              %td.last.votes=feature.vote_count
       .actions-bar.wat-cf
         .actions="&nbsp;"
 

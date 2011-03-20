@@ -19,4 +19,10 @@ class Feature
       return true if account.id == user_id
     end
   end
+  
+  def vote_count
+    count = 0
+    votes.each { |vote| count += vote.credits }
+    count / cost
+  end
 end
