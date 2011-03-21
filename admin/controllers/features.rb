@@ -1,7 +1,10 @@
 Admin.controllers :features do
 
   get :index do
-    @features = Feature.all
+    @unsorted_features = Feature.all
+    puts @unsorted_features
+    @features = @unsorted_features.sort_by { |feature| feature.vote_count }
+    @features = @features.reverse_each
     render 'features/index'
   end
 
@@ -76,10 +79,6 @@ Admin.controllers :features do
         end
       end
       nil
-    end
-    
-    def tr_vote_count(votes)
-      
     end
   end
 end

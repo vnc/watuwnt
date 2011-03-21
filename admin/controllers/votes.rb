@@ -29,12 +29,11 @@ Admin.controllers :votes do
     @vote.date = Time.new
     @vote.account_id = current_account.id
     if @vote.save
-      #flash[:notice] = 'Vote was successfully created.'
       status 201 # created
       {
         :status => 201,
         :new_vote_count => Feature.get(@vote.feature_id).vote_count,
-        :user_balance => 0,
+        :user_vote_balance => current_account.vote_balance,
         :vote => @vote
       }.to_json
     else

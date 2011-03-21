@@ -1,11 +1,15 @@
 .block
-  %h3 Simple Block
+  %h3 Vote Balance
   .content
-    %p
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    %div
+      %h4
+        Total Votes:
+        %span#total_votes=current_account.initial_votes
+    %div
+      %h4
+        Votes Remaining:  
+        %span#user_vote_balance=current_account.vote_balance 
 .block
   %h3 Links
   %ul.navigation
-    %li=link_to "Link 1"
-    %li=link_to "Link 2"
+    %li=link_to "Request New Feature", "http://docs.google.com/a/vivakinervecenter.com"

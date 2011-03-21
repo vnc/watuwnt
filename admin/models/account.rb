@@ -51,6 +51,18 @@ class Account
   def is_admin?
     self.role == "admin"
   end
+  
+  def initial_votes
+    100
+  end
+  
+  def vote_balance
+    total_votes = self.initial_votes
+    self.votes.each do |vote|
+      total_votes = total_votes - vote.credits
+    end
+    total_votes
+  end
 
   private
     def password_required

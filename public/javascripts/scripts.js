@@ -19,9 +19,7 @@ $(document).ready(function() {
 				if (result.vote.feature_id == feature_id && result.vote.credits < 0) {
 					$(row).animate({backgroundColor: 'white'}, 250);
 					$(row).find('td.votes').text(result.new_vote_count)//.glow()
-					// flash text	
-					// update user's balance text
-					// flash text				
+					$('span#user_vote_balance').text(result.user_vote_balance).glow();
 				}
 			});
 		} else {
@@ -30,8 +28,7 @@ $(document).ready(function() {
 				if (result.vote.feature_id == feature_id && result.vote.credits > 0) {
 					$(row).animate({backgroundColor: 'lightgreen'}, 250);
 					$(row).find('td.votes').text(result.new_vote_count)//.glow()
-					// update user's balance text
-					// flash text
+					$('span#user_vote_balance').text(result.user_vote_balance).glow();
 				}
 			});
 		}
