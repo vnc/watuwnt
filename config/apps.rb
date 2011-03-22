@@ -22,5 +22,5 @@
 #
 
 # Mounts the core application for this project
-Padrino.mount("Watuwnt").to('/')
-Padrino.mount("Admin").to("/admin")
+Padrino.mount("Watuwnt")
+Padrino.mount("Admin").to("/")

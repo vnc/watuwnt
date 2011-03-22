@@ -16,7 +16,7 @@ class Admin < Padrino::Application
   # layout  :my_layout          # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
   #
 
-  set :login_page, "/admin/sessions/new"
+  set :login_page, "/sessions/new"
   disable :store_location
 
   access_control.roles_for :any do |role|
