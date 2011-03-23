@@ -1,2 +1,2 @@
-ruby-1.9.2-p180@watuwnt
-
+rvm use ruby-1.9.2-p180@watuwnt
+export PATH=/home/ec2-user/.rvm/gems/ruby-1.9.2-p180/bin:$PATH
