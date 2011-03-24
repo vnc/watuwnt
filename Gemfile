@@ -10,6 +10,7 @@ gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'haml'
 gem 'dm-sqlite-adapter'
 gem 'data_mapper'
+gem 'net-ldap'
 
 # Test requirements
 

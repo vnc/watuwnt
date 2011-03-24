@@ -23,4 +23,6 @@ Padrino.after_load do
   DataMapper.finalize
 end
 
+puts Padrino.port
+
 Padrino.load!
