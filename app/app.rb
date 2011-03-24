@@ -26,6 +26,8 @@ class Watuwnt < Padrino::Application
   
   configure :development do
     set :reload, true
+    set :port, 80
+    set :host, "50.17.205.254"
   end
 
   ##
