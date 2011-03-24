@@ -2,7 +2,6 @@ Admin.controllers :features do
 
   get :index do
     @unsorted_features = Feature.all
-    puts @unsorted_features
     @features = @unsorted_features.sort_by { |feature| feature.vote_count }
     @features = @features.reverse_each
     render 'features/index'
@@ -24,6 +23,7 @@ Admin.controllers :features do
       redirect url(:features, :index)
     end
     @feature = Feature.new(params[:feature])
+    @feature.created = Time.new
     if @feature.save
       flash[:notice] = 'Feature was successfully created.'
       redirect url(:features, :edit, :id => @feature.id)

@@ -7,9 +7,9 @@
   %body
     #container
       #box
-        %h1 Padrino Admin
+        -#%h1 Padrino Admin
         #block-login.block
-          %h2 Login Box
+          %h2 watuwnt login
           .content.login
             .flash=[:error, :warning, :notice].map { |type| flash_tag(type, :class => "message #{type}") }.join
             -form_tag(url(:sessions, :create), :class => 'form login') do
