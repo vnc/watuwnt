@@ -39,22 +39,23 @@ class Account
   def self.authenticate(login, password)
     account = first(:conditions => { :email => login }) if login.present?
     if account
-      if ldap_authenticated(login,password)
+      if self.ldap_authenticated?(login,password)
         return account # in local db, successful ldap auth
       else
         return nil # in local db, bad ldap auth
       end
     else
-      if ldap_authenticated(login,password)
-        return create_account(login,password,"user") # not in local db, successful ldap auth
+      if self.ldap_authenticated?(login,password)
+        return self.create_account(login,password,"user") # not in local db, successful ldap auth
       else
         return nil # not in local db, bad ldap auth
       end
     end
   end
   
-  def create_account(login,password,role)
-    @account = Account.new({ :email => login, :password => "decoy", :role => role, :ldap_account => login })
+  def self.create_account(login,password,role)
+    @account = Account.new({ :email => login, :password => "decoy", :password_confirmation => "decoy", :role => role, :ldap_account => login })
+    puts @account.save
     if @account.save
       return @account
     else
@@ -89,7 +90,7 @@ class Account
     total_votes
   end
   
-  def ldap_authenticated?(login, password)
+  def self.ldap_authenticated?(login, password)
     return false if password.blank?
     ldap_host = '10.244.26.69'
     ldap_port = 636
