@@ -124,6 +124,7 @@ DEPENDENCIES
   data_mapper
   dm-sqlite-adapter
   haml
+  net-ldap
   padrino (= 0.9.23)
   rack-flash
   rake
