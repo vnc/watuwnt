@@ -1,25 +1,36 @@
 #block-text.block
   .content
-    %h2.title Dashboard
+    %h2.title Welcome
     .inner
       %p.first
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        This is the feature prioritization tool for the Data Platform Technology team.
+        The Features tab above will show a list of items currently on the backlog for the Data Platform Technology team.
+        Please vote on features that are important to you. The number of votes that each feature receives will be used as an
+        input to determine the priority of our work.
+      %p
         %span.hightlight
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      %p
-        %span.small
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-      %p
-        %span.gray
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+          Note that this is just one input to the prioritization process.
+        The top-voted features will not necessarily be worked on!
+        However the number of votes a feature receives will be one of the top factors considered.
       %hr
+      %h3 Instructions
       %p
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        %span.hightlight
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Voting on a feature is simple.
+        %ol
+          %li Click on the Features tab.
+          %li Click on the feature for which you want to vote. It will turn green if you've successfully voted for it.
+          %li Click again on that feature to undo your vote. You may change any of your votes at any time.
+          %li To request a new feature be added, click "Request New Feature" on the right.
+      %hr
+      %h3 Rules
+      %p
+        %ul
+          %li Each person on the IOD team has 100 credits. Look to the right for your credit balance.
+          %li Each feature you vote on costs a certain number of credits. The cost is specified for the feature.
+          %li In general, more time consuming or complex features cost more.
+          %li
+            You may change any of your votes at any time. So it does not do any good to hold on to unused credits.
+            If a new feature is added that is very important to you, unvote on one or multiple other features and then vote on the new one.
+          %li Once a feature you voted on is completed, the credits you used to make your vote are released. You may then apply those credits toward a new feature.
 
 -content_for :sidebar, partial("base/sidebar")

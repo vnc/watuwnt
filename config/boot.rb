@@ -23,4 +23,6 @@ Padrino.after_load do
   DataMapper.finalize
 end
 
+#Padrino.run!(:port => 9000, :bind => '50.17.205.254')
+
 Padrino.load!

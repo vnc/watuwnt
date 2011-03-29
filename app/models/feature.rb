@@ -23,6 +23,6 @@ class Feature
   def vote_count
     count = 0
     votes.each { |vote| count += vote.credits }
-    count / cost
+    (cost != 0) ? count / cost : 0
   end
 end
